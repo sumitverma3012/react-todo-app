@@ -2,6 +2,8 @@
 
 A simple TODO application developed with React.
 
+[Demo](https://tender-easley-c063c8.netlify.app)
+
 ## Coding task
 
 🙀 *This application is currently half-baked and it needs your help to be completed!* 🙀
