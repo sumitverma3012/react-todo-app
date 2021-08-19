@@ -1,10 +1,6 @@
-
-.container {
-  display: grid;
-}
-
-.child {
-  margin: 0 auto;
+:root {
+  --subheading-color: #6c757d;
+  --white: #ffffff;
 }
 
 h1 {
@@ -13,30 +9,21 @@ h1 {
   text-align: center;
 }
 
-.todo {
-  display: flex;
-  flex-direction: column;
-}
-
-thead tr td {
-  text-align: center;
-}
-
 .todos-heading {
   margin-bottom: .5rem;
   font-weight: 500;
   line-height: 1.2;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .todos-subHeading {
   font-size: 1rem;
-  color: #6c757d;
+  color: var(--subheading-color)
 }
 
 .todos-addItem {
   z-index: 1;
-  background: white;
+  background: var(--white);
   position: sticky;
   top: 0;
 }

@@ -7,9 +7,9 @@ import TodoFilters from "../TodoFilters/TodoFilters";
 
 const Todos = (props) => {
     const {todosList, addTodoItem, deleteTodoItem, completeTodoItem, filterTotalTodoItems, filterCompleteTodoItems, totalTodos, completedTodos} = props;
+
     return (
         <Container maxWidth="sm">
-
             <div className={'todos-heading'}>Todos List</div>
             <div className={'todos-subHeading'}>What to do next?</div>
             <Box mb={5} mt={4}>

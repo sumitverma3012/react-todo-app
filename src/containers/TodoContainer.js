@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import Todos from "../components/Todos/Todos";
 import {getLocalStorage, setLocalStorage} from '../utils/localStorage';
@@ -9,6 +9,16 @@ const TodoContainer = () => {
     const [completed, setCompleted] = useState(0);
     const [isFilterEnabled, setIsFilterEnabled] = useState(false);
 
+    const filterCompleteTodoItems = useCallback(() => {
+        setIsFilterEnabled(true)
+        setFilteredTodos(todos.filter((todo) => !!todo.completed));
+    }, [todos])
+
+    const filterTotalTodoItems = useCallback(() => {
+        setFilteredTodos(todos);
+        setIsFilterEnabled(false)
+    }, [todos])
+
     useEffect(() => {
         setCompleted(todos.filter(item => item.completed === true).length)
         setLocalStorage('todos', JSON.stringify(todos));
@@ -17,7 +27,7 @@ const TodoContainer = () => {
         } else {
             setFilteredTodos([...todos]);
         }
-    }, [todos]);
+    }, [todos, filterCompleteTodoItems, isFilterEnabled]);
 
     const createTodoItem = (description) => {
         const newTodo = {
@@ -44,16 +54,6 @@ const TodoContainer = () => {
             return todo;
         })
         setTodos(filteredTodo);
-    }
-
-    const filterCompleteTodoItems = () => {
-        setIsFilterEnabled(true)
-        setFilteredTodos(todos.filter((todo) => !!todo.completed));
-    }
-
-    const filterTotalTodoItems = () => {
-        setFilteredTodos(todos);
-        setIsFilterEnabled(false)
     }
 
     return(
