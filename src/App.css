@@ -21,3 +21,22 @@ h1 {
 thead tr td {
   text-align: center;
 }
+
+.todos-heading {
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2rem;
+}
+
+.todos-subHeading {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.todos-addItem {
+  z-index: 1;
+  background: white;
+  position: sticky;
+  top: 0;
+}

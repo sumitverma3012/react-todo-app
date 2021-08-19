@@ -1,17 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import Todos from "../components/Todos/Todos";
-import {getLocalStorage, setLocalStorage} from '../utils/sessionStorage';
+import {getLocalStorage, setLocalStorage} from '../utils/localStorage';
 
 const TodoContainer = () => {
-    const [todos, setTodos] = useState(
-        () => JSON.parse(getLocalStorage('todos')) || []
-    );
+    const [todos, setTodos] = useState(() => JSON.parse(getLocalStorage('todos')) || []);
+    const [filteredTodos, setFilteredTodos] = useState(todos);
     const [completed, setCompleted] = useState(0);
+    const [isFilterEnabled, setIsFilterEnabled] = useState(false);
 
     useEffect(() => {
         setCompleted(todos.filter(item => item.completed === true).length)
         setLocalStorage('todos', JSON.stringify(todos));
+        if(isFilterEnabled){
+            filterCompleteTodoItems()
+        } else {
+            setFilteredTodos([...todos]);
+        }
     }, [todos]);
 
     const createTodoItem = (description) => {
@@ -24,9 +29,7 @@ const TodoContainer = () => {
     };
 
     const deleteTodoItem = (todoItem) => {
-        const filteredTodo = todos.filter((todo) => {
-            return todo.id !== todoItem.id;
-        })
+        const filteredTodo = todos.filter((todo) => todo.id !== todoItem.id)
         setTodos(filteredTodo);
     }
 
@@ -43,13 +46,27 @@ const TodoContainer = () => {
         setTodos(filteredTodo);
     }
 
+    const filterCompleteTodoItems = () => {
+        setIsFilterEnabled(true)
+        setFilteredTodos(todos.filter((todo) => !!todo.completed));
+    }
+
+    const filterTotalTodoItems = () => {
+        setFilteredTodos(todos);
+        setIsFilterEnabled(false)
+    }
+
     return(
-        <>
-            <Todos addTodoItem={createTodoItem} deleteTodoItem={deleteTodoItem} todosList={todos} completeTodoItem={completeTodoItem}/>
-            <div className="child">
-                <span>Total of items: {todos.length}</span> | <span>Completed: {completed}</span>
-            </div>
-        </>
+        <Todos
+            addTodoItem={createTodoItem}
+            deleteTodoItem={deleteTodoItem}
+            todosList={filteredTodos}
+            completeTodoItem={completeTodoItem}
+            filterTotalTodoItems={filterTotalTodoItems}
+            filterCompleteTodoItems={filterCompleteTodoItems}
+            totalTodos={todos.length}
+            completedTodos={completed}
+        />
     )
 }
 

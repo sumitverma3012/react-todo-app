@@ -1,86 +1,54 @@
 import React from 'react';
 import Todo from "../Todo/Todo";
 import AddTodo from "../AddTodo/AddTodo";
-
-// class Todos extends Component {
-//
-//     //Component state with default values
-//     state = {
-//         addTodoDescription: "",
-//         todos: [
-//             {
-//                 id: 1,
-//                 description: "Lorem ipsum dolor sit amet",
-//                 completed: false
-//             },
-//             {
-//                 id: 2,
-//                 description: "consectetur adipiscing elit",
-//                 completed: true
-//             },
-//             {
-//                 id: 3,
-//                 description: "tsed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-//                 completed: false
-//             }
-//         ]
-//     }
-//
-//     render() {
-//         return (
-//             <div className="child">
-//                 <table className="table">
-//                     <thead>
-//                     <tr>
-//                         <td></td>
-//                         <td>What to do next</td>
-//                         <td></td>
-//                     </tr>
-//                     </thead>
-//                     <tbody>
-//                     {this.state.todos.map((todo, index) => (
-//                         <tr key={todo.id}>
-//                             <Todo index={index + 1} todo={todo} />
-//                         </tr>
-//                     ))}
-//                     <tr>
-//                         <td colSpan="3">
-//                             <AddTodo addTodoDescription={this.state.addTodoDescription} />
-//                         </td>
-//                     </tr>
-//                     </tbody>
-//                 </table>
-//             </div>
-//         );
-//     }
-// }
+import {Container, List, Box, Divider} from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
+import TodoFilters from "../TodoFilters/TodoFilters";
 
 const Todos = (props) => {
-    const {todosList, addTodoItem, deleteTodoItem, completeTodoItem} = props;
+    const {todosList, addTodoItem, deleteTodoItem, completeTodoItem, filterTotalTodoItems, filterCompleteTodoItems, totalTodos, completedTodos} = props;
     return (
-        <div>
-            <AddTodo addTodoItem={addTodoItem} />
-            <div>
+        <Container maxWidth="sm">
+
+            <div className={'todos-heading'}>Todos List</div>
+            <div className={'todos-subHeading'}>What to do next?</div>
+            <Box mb={5} mt={4}>
+                <Divider />
+            </Box>
+            <Box className={'todos-addItem'}>
+                <Box mb={4}>
+                    <AddTodo addTodoItem={addTodoItem} />
+                </Box>
+                <Box mt={4}>
+                    <TodoFilters
+                        filterCompleteTodoItems={filterCompleteTodoItems}
+                        filterTotalTodoItems={filterTotalTodoItems}
+                        totalTodos={totalTodos}
+                        completedTodos={completedTodos}
+                    />
+                </Box>
+            </Box>
+            <Box>
                 {todosList.length === 0 ? (
-                    <li>Nothing to display, no result found.</li>
-                ) : (
-                    <ul>
-                        {
-                            todosList.map((todo) => {
-                                return (
-                                    <Todo
-                                        key={todo.id}
-                                        todo={todo}
-                                        deleteTodoItem={deleteTodoItem}
-                                        completeTodoItem={completeTodoItem}
-                                    />
-                                );
+                    <Box mt={4}>
+                        <Alert severity="warning">Nothing to display, no result found.</Alert>
+                    </Box>
+                ) :
+                    <List>
+                        {todosList.map((todo) => {
+                            return (
+                                <Todo
+                                    key={todo.id}
+                                    todo={todo}
+                                    deleteTodoItem={deleteTodoItem}
+                                    completeTodoItem={completeTodoItem}
+                                />);
                             })
                         }
-                    </ul>
-                )}
-            </div>
-        </div>
+                    </List>
+                }
+            </Box>
+        </Container>
     )
 }
 
