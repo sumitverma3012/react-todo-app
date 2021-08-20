@@ -1,9 +1,40 @@
 # React TODO app
 
-A simple TODO application developed with React.
+###✍️ A simple TODO application developed with React.
 
-[Demo](https://tender-easley-c063c8.netlify.app)
+🧐**Design Decisions:**
 
+It simply shows the features and aspects required for task management. The app's fundamental operation is based on a user's ability to build a list of tasks that can be stored, quickly removed, or declared complete. The information is very readable due to the lack of distractions, basic screen design, and well-thought-out typeface.
+
+The basic functional buttons and filters are located at the top of the screen, facilitating accessibility for users with all screen devices. Even if the user scrolls to the bottom of the screen, the creation flow remains visible.
+
+💭**Deployment:**
+
+Git repo is integrated with Netlify that supports continous deployment wherein any code commit is automatically released to environment
+
+###[Demo](https://tender-easley-c063c8.netlify.app)
+
+
+🤓**Assumptions:**
+1. User can unmarked a completed task
+2. **Validation**  - User must provide a value before it can be saved as a task
+
+💥**The following features can be added to enhance functionality:**
+1. Make it possible to search to-do lists.
+2. Assign deadlines to each task.
+3. Each task may be assigned to a category by the user.
+
+
+
+
+
+
+
+
+
+__ __
+__ __
+__ __
 ## Coding task
 
 🙀 *This application is currently half-baked and it needs your help to be completed!* 🙀
