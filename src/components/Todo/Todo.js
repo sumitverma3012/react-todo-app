@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     IconButton,
     ListItem,
@@ -23,7 +22,7 @@ const Todo = (props) => {
     }
 
     return (
-        <Zoom timeout={600} in={true}>
+        <Zoom timeout={600} in={true}  data-testid="todo-item">
             <Paper elevation={3} className={'todo-section'}>
                 <ListItem dense button onClick={() => completeTodoItem(todo)}>
                     <ListItemIcon>
@@ -31,6 +30,7 @@ const Todo = (props) => {
                             edge="start"
                             checked={todo.completed}
                             tabIndex={-1}
+                            data-testid={"checkbox"}
                         />
                     </ListItemIcon>
                     <ListItemText id={todo.id} primary={renderCompletedTodoItem(todo)} secondary={formatMillisecondsToDateTime(todo.timeStamp)}/>

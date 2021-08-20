@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import Todos from "../components/Todos/Todos";
 import {getLocalStorage, setLocalStorage} from '../utils/localStorage';

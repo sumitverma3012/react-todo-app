@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Avatar, Box, Chip} from "@material-ui/core";
 
 const TodoFilters = (props) => {

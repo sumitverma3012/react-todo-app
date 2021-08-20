@@ -1,4 +1,3 @@
-import React from 'react';
 import Todo from "../Todo/Todo";
 import AddTodo from "../AddTodo/AddTodo";
 import {Container, List, Box, Divider} from "@material-ui/core";
