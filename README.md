@@ -12,7 +12,7 @@ The basic functional buttons and filters are located at the top of the screen, f
 
 Git repo is integrated with Netlify that supports continous deployment wherein any code commit is automatically released to environment
 
-###[Demo](https://tender-easley-c063c8.netlify.app)
+[Demo](https://tender-easley-c063c8.netlify.app)
 
 
 🤓**Assumptions:**
