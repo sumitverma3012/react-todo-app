@@ -34,6 +34,7 @@ const TodoContainer = () => {
             id: uuidv4(),
             description,
             completed: false,
+            timeStamp: new Date().getTime()
         };
         setTodos([...todos, newTodo])
     };

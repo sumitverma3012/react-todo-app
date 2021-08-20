@@ -11,6 +11,7 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 import GreenCheckbox from "../common/Checkbox/Checkbox";
 import './Todo.css';
+import {formatMillisecondsToDateTime} from "../../utils/timeUtils";
 
 
 const Todo = (props) => {
@@ -32,7 +33,7 @@ const Todo = (props) => {
                             tabIndex={-1}
                         />
                     </ListItemIcon>
-                    <ListItemText id={todo.id} primary={renderCompletedTodoItem(todo)} />
+                    <ListItemText id={todo.id} primary={renderCompletedTodoItem(todo)} secondary={formatMillisecondsToDateTime(todo.timeStamp)}/>
                     <ListItemSecondaryAction>
                         <IconButton color="secondary" edge="end" aria-label="delete" onClick={() => deleteTodoItem(todo)}>
                             <DeleteIcon />
