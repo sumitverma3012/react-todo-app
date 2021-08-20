@@ -1,6 +1,6 @@
 # React TODO app
 
-###✍️ A simple TODO application developed with React.
+✍️ A simple TODO application developed with React.
 
 🧐**Design Decisions:**
 
