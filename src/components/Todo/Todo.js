@@ -33,7 +33,7 @@ const Todo = (props) => {
                             data-testid={"checkbox"}
                         />
                     </ListItemIcon>
-                    <ListItemText id={todo.id} primary={renderCompletedTodoItem(todo)} secondary={formatMillisecondsToDateTime(todo.timeStamp)}/>
+                    <ListItemText id={todo.id} className={'todo-item__text'} primary={renderCompletedTodoItem(todo)} secondary={formatMillisecondsToDateTime(todo.timeStamp)}/>
                     <ListItemSecondaryAction>
                         <IconButton color="secondary" edge="end" aria-label="delete" onClick={() => deleteTodoItem(todo)}>
                             <DeleteIcon />
